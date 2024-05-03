@@ -1,6 +1,6 @@
 import React from "react";
 
-function Filters(){
+function Filters({applyFilters}){
     return(
         <></>
     )

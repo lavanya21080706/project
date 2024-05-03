@@ -24,7 +24,7 @@ function DashBoard(){
   const fetchJobs = async () => {
     try {
       const response = await fetchData(); 
-      setJobs(response.data); 
+      setJobs(response.jdList); 
     } catch (error) {
       console.error('Error fetching job data:', error);
     }
