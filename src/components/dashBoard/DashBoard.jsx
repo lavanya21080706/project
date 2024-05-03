@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchData } from '../../api/FetchData';
 import Filters from '../filters/Filters';
 import JobList from '../jobList/JobList'
+import styles from "./DashBoard.module.css"
 
 
 function DashBoard(){ 
@@ -43,7 +44,7 @@ function DashBoard(){
   }, [filters]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <Filters applyFilters={applyFilters} />
       <JobList jobs={jobs} />
     </div>
