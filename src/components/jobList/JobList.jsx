@@ -1,5 +1,7 @@
 import React from "react";
 import styles from './JobList.module.css';
+import pro from '../../assets/pro.png'
+import profile from '../../assets/profile.png'
 
 function JobList({ jobs }) {
 
@@ -35,20 +37,19 @@ function JobList({ jobs }) {
                                 <p className={styles.location}>{capitalize(job.location)}</p>
                             </div>
                         </div>
-                        {/* <div> */}
                             <p className={styles.salary}>Estimated Salary:{job.minJdSalary} - {job.maxJdSalary} {job.salaryCurrencyCode} ✅</p>
                             <p className={styles.aboutCompany}>About Company:</p>
                             <p className={styles.about}>About Us</p>
-                            <div className={styles.descBox}>
-                            <p className={styles.jobDesc}>{job.jobDetailsFromCompany}</p>
-                            </div>
+                            <p className={styles.jobDesc}>{job.jobDetailsFromCompany}</p>               
                             <div className={styles.overlay}>
+                                <p className={styles.showMore}>View job</p>
                             <p className={styles.exp}>Minimum Experience: </p>
-                            <span className={styles.exp}> {job.minExp} years</span>
+                            <p className={styles.years}> {job.minExp} years</p>
                             <button className={styles.applyButton}>⚡Easy Apply</button>
-                            {/* <button className={styles.referal}>Unlock referal asks</button> */}
+                            <div className={styles.referal}>
+                                <img src={profile} className={styles.profile}/> <img src={pro} className={styles.profile} />Unlock referal asks
+                                </div>
                             </div>
-                        {/* </div> */}
                     </div>
                 ))}
             </div>
