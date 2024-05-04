@@ -73,6 +73,9 @@ span{
     height:1rem;
 }
 
+.selectedOption{
+    background-color: aqua;
+}
 
 @media only screen and (max-width: 768px) {
     .container {
