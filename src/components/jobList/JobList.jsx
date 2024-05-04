@@ -11,13 +11,24 @@ function JobList({ jobs }) {
         const scaledNumber = randomNumber * limit;
         const randomInteger = Math.floor(scaledNumber);
         return randomInteger + 1;
-      }
+    }
 
-      //To capitalize the first alphabet
-      function capitalize(words){
+    //To capitalize the first alphabet
+    function capitalize(words) {
         const capitalizeWord = words.charAt(0).toUpperCase() + words.slice(1);
         return capitalizeWord;
-      }
+    }
+
+
+    //To convert USD to INR 
+    function convertToINR(salaryUSD) {
+        const conversionRate = 83.0;
+        const salaryINR = salaryUSD * conversionRate;
+        // Convert to Lakhs Per Annum
+        const salaryLPA = salaryINR / 100000;
+        return salaryLPA.toFixed(2); // Limit to 2 decimal places
+    }
+
 
     return (
         <div className={styles.container}>
@@ -37,19 +48,38 @@ function JobList({ jobs }) {
                                 <p className={styles.location}>{capitalize(job.location)}</p>
                             </div>
                         </div>
-                            <p className={styles.salary}>Estimated Salary:{job.minJdSalary} - {job.maxJdSalary} {job.salaryCurrencyCode} ✅</p>
-                            <p className={styles.aboutCompany}>About Company:</p>
-                            <p className={styles.about}>About Us</p>
-                            <p className={styles.jobDesc}>{job.jobDetailsFromCompany}</p>               
-                            <div className={styles.overlay}>
-                                <p className={styles.showMore}>View job</p>
-                            <p className={styles.exp}>Minimum Experience: </p>
-                            <p className={styles.years}> {job.minExp} years</p>
+                        {job.maxJdSalary === null && (
+                            <p className={styles.salary}>
+                                Estimated Salary: {job.minJdSalary} {job.salaryCurrencyCode} ✅
+                            </p>
+                        )}
+
+                        {job.minJdSalary === null && (
+                            <p className={styles.salary}>
+                                Estimated Salary: {job.maxJdSalary} {job.salaryCurrencyCode} ✅
+                            </p>
+                        )}
+                        {job.minJdSalary !== null && job.maxJdSalary !== null && (
+                            <p className={styles.salary}>
+                                Estimated Salary: {job.minJdSalary} - {job.maxJdSalary} {job.salaryCurrencyCode} ✅
+                            </p>
+                        )}
+                        <p className={styles.aboutCompany}>About Company:</p>
+                        <p className={styles.about}>About Us</p>
+                        <p className={styles.jobDesc}>{job.jobDetailsFromCompany}</p>
+                        <div className={styles.overlay}>
+                            <p className={styles.showMore}>View job</p>
+                            {job.minExp && (
+                                <>
+                                    <p className={styles.exp}>Minimum Experience: </p>
+                                    <p className={styles.years}> {job.minExp} years</p>
+                                </>
+                            )}
                             <button className={styles.applyButton}>⚡Easy Apply</button>
                             <div className={styles.referal}>
-                                <img src={profile} className={styles.profile}/> <img src={pro} className={styles.profile} />Unlock referal asks
-                                </div>
+                                <img src={profile} className={styles.profile} /> <img src={pro} className={styles.profile} />Unlock referal asks
                             </div>
+                        </div>
                     </div>
                 ))}
             </div>

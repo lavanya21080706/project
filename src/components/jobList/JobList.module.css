@@ -10,7 +10,7 @@
 .jobList {
     width: 100%;
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr)); /* Create flexible grid columns */
+    grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr)); 
     gap: 2.5rem;
 }
 
@@ -145,6 +145,10 @@
 }
 
 .showMore{
+    position: absolute;
+    top:20%;
+    left:50%;
+    transform: translate(-50%,-50%);
     text-align: center;
     color:#4C47D8;
     font-weight: 300;
@@ -202,4 +206,15 @@
     width:2rem;
     height:2rem;
     border-radius: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
 }
